@@ -3,7 +3,9 @@ const W = {
   date: "2026-12-06T17:00:00+07:00",
   lat: 13.52797,
   lng: 102.99164,
-  music: "", // mp3 URL you have rights to (leave empty to hide the music button)
+  youtube: "https://youtu.be/MXVOj27_9a8",   // paste your song link here
+   youtubeStart: 0,                                           // start at this second (optional)
+  music: "music.mp3", // mp3 URL you have rights to (leave empty to hide the music button)
 
   // ---- PHOTOS ----
   // To add a photo: put the file in the /image folder and add its name here.
