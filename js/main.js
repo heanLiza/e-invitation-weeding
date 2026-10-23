@@ -33,6 +33,7 @@ function render() {
   renderProgramme();
   setBackgrounds();
   tickCountdown();
+  renderStory();
   observeReveals();
 }
 
@@ -80,7 +81,7 @@ const lightbox = $("#lb");
 let current = 0;
 
 gallery.innerHTML = W.photos
-  .map((src, i) => `<img src="${src}" alt="" data-i="${i}" decoding="async">`)
+  .map((src, i) => `<img src="${src}" alt="" data-i="${i}" decoding="async" onerror="this.remove()">`)
   .join("");
 
 function showPhoto(i) {
@@ -129,52 +130,52 @@ addEventListener(
   { passive: true }
 );
 
-/* ---------- Story slideshow ---------- */
+/* ---------- Story: scroll down -> photos slide sideways (pinned, no scrollbar) ---------- */
 
-const showEl = $("#show");
-const showStage = $("#showStage");
-const showDots = $("#showDots");
-let slideIndex = 0;
-let slideTimer = null;
+let storyDist = 0;
 
-W.slides.forEach((photo, i) => {
-  const slide = document.createElement("div");
-  slide.className = "slide";
-  // custom properties resolve url() against the stylesheet, so give the browser a full address
-  slide.style.setProperty("--img", `url('${new URL(W.photos[photo], document.baseURI).href}')`);
-  showStage.appendChild(slide);
-
-  const dot = document.createElement("button");
-  dot.setAttribute("aria-label", `Photo ${i + 1}`);
-  dot.onclick = () => goToSlide(i, true);
-  showDots.appendChild(dot);
-});
-
-function goToSlide(i, userAction = false) {
-  const total = W.slides.length;
-  slideIndex = (i + total) % total;
-  [...showStage.children].forEach((el, n) => el.classList.toggle("on", n === slideIndex));
-  [...showDots.children].forEach((el, n) => el.classList.toggle("on", n === slideIndex));
-  if (userAction) restartSlideTimer();
+function renderStory() {
+  const track = $("#storyTrack");
+  if (!track || !W.slides) return;
+  const caps = (W.captions && W.captions[lang]) || [];
+  const END = { kh: ["ហើយដំណើរនៃស្នេហ៍", "នឹងបន្តរៀងរហូត"], en: ["And our journey of love", "goes on forever"] };
+  const t = { ...T[lang], storyEndK: T[lang].storyEndK || END[lang][0], storyEndH: T[lang].storyEndH || END[lang][1] };
+  track.innerHTML =
+    `<div class="st-title"><small class="h sm">${t.storyk}</small><h2 class="h foil">${t.storyh}</h2></div>` +
+    W.slides
+      .map(
+        (p, i) => `<figure class="st-card"><div class="st-img"><img src="${W.photos[p] || W.photos[0]}" alt="" decoding="async" onerror="this.closest('.st-card').remove();measureStory()"></div>
+        <figcaption><b>${num(String(i + 1).padStart(2, "0"))}</b><span>${caps[i] || ""}</span></figcaption></figure>`
+      )
+      .join("");
+  track.querySelectorAll("img").forEach((img) => img.addEventListener("load", measureStory));
+  measureStory();
 }
 
-function restartSlideTimer() {
-  clearInterval(slideTimer);
-  slideTimer = setInterval(() => goToSlide(slideIndex + 1), W.slideSeconds * 1000);
+function measureStory() {
+  const section = $("#story"), track = $("#storyTrack");
+  if (!section || !track) return;
+  storyDist = Math.max(0, track.scrollWidth - innerWidth);
+  section.style.height = `${storyDist + innerHeight}px`; // vertical scroll length = horizontal distance
+  onStoryScroll();
 }
 
-$("#showPrev").onclick = () => goToSlide(slideIndex - 1, true);
-$("#showNext").onclick = () => goToSlide(slideIndex + 1, true);
+function onStoryScroll() {
+  const section = $("#story"), track = $("#storyTrack");
+  if (!section || !track) return;
+  const pin = section.querySelector(".st-pin");
+  const range = Math.max(1, section.offsetHeight - innerHeight);
+  const top = section.getBoundingClientRect().top;
+  const p = Math.min(1, Math.max(0, -top / range));
+  if (top > 0) pin.style.cssText = "position:absolute;top:0";
+  else if (-top >= range) pin.style.cssText = "position:absolute;top:auto;bottom:0";
+  else pin.style.cssText = "position:fixed;top:0";
+  track.style.transform = `translate3d(${-p * storyDist}px,0,0)`;
+}
 
-let slideTouchX = 0;
-showEl.addEventListener("touchstart", (e) => (slideTouchX = e.touches[0].clientX), { passive: true });
-showEl.addEventListener("touchend", (e) => {
-  const dx = e.changedTouches[0].clientX - slideTouchX;
-  if (Math.abs(dx) > 40) goToSlide(slideIndex + (dx < 0 ? 1 : -1), true);
-});
-
-goToSlide(0);
-restartSlideTimer();
+addEventListener("scroll", onStoryScroll, { passive: true });
+addEventListener("resize", measureStory);
+addEventListener("load", measureStory);
 
 /* ---------- Cover fireflies ---------- */
 
@@ -282,9 +283,17 @@ new IntersectionObserver((entries) => {
   candleVisible = entries[0].isIntersecting;
   if (candleVisible) animateRipples();
 }).observe(candleSection);
-candleSection.addEventListener("pointerdown", addRipple);
+// Touch must never block page scroll: on phones only a TAP makes a ripple (no drag handling).
+let lastPointerType = "mouse";
+candleSection.addEventListener("pointerdown", (e) => {
+  lastPointerType = e.pointerType;
+  if (e.pointerType !== "touch") addRipple(e);
+});
 candleSection.addEventListener("pointermove", (e) => {
-  if (e.buttons || e.pointerType === "touch") addRipple(e);
+  if (e.pointerType === "mouse" && e.buttons) addRipple(e);
+});
+candleSection.addEventListener("click", (e) => {
+  if (lastPointerType === "touch") addRipple(e);
 });
 
 /* ---------- Intro: double doors -> site ---------- */
@@ -369,11 +378,7 @@ $("#ics").onclick = () => {
 /* ---------- Share buttons ---------- */
 
 const pageUrl = encodeURIComponent(location.href);
-const shareText = encodeURIComponent("សិរីសួស្តីអាពាហ៍ពិពាហ៍ ម៉េង & លក្ខិណា");
 
-$("#s-tg").href = `https://t.me/share/url?url=${pageUrl}&text=${shareText}`;
-$("#s-ms").href = `https://www.facebook.com/dialog/send?link=${pageUrl}&redirect_uri=${pageUrl}&app_id=YOUR_FB_APP_ID`;
-$("#s-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
 $("#s-cp").onclick = (e) =>
   navigator.clipboard?.writeText(location.href).then(() => {
     e.currentTarget.querySelector("span").textContent = "✓";

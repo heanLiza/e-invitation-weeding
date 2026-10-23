@@ -4,7 +4,7 @@ const W = {
   lat: 13.52797,
   lng: 102.99164,
   youtube: "https://youtu.be/MXVOj27_9a8",   // paste your song link here
-   youtubeStart: 0,                                           // start at this second (optional)
+   youtubeStart: 0,                                             // start at this second (optional)
   music: "music.mp3", // mp3 URL you have rights to (leave empty to hide the music button)
 
   // ---- PHOTOS ----
@@ -31,21 +31,19 @@ const W = {
   prog: [
     // ថ្ងៃទី០៥ ខែធ្នូ ឆ្នាំ២០២៦
     { kh: "ថ្ងៃសៅរ៍ ទី០៥ ខែធ្នូ ឆ្នាំ២០២៦", en: "Saturday, 05 December 2026", k: "dayHeader" },
-    { kh: "ម៉ោង ០៣:០០ រសៀល", en: "3:00 PM", k: "p1" },
-    { kh: "ម៉ោង ០៤:០០ រសៀល", en: "4:00 PM", k: "p2" },
-    { kh: "ម៉ោង ០៥:០០ ល្ងាច", en: "5:00 PM", k: "p3" },
-    { kh: "ម៉ោង ០៦:៣០ ល្ងាច", en: "6:30 PM", k: "p4" },
+    { kh: "ម៉ោង ០៤:០០ រសៀល", en: "4:00 PM", k: "p1" },
+    { kh: "ម៉ោង ០៥:០០ ល្ងាច", en: "5:00 PM", k: "p2" },
 
     // ថ្ងៃទី០៦ ខែធ្នូ ឆ្នាំ២០២៦
     { kh: "ថ្ងៃអាទិត្យ ទី០៦ ខែធ្នូ ឆ្នាំ២០២៦", en: "Sunday, 06 December 2026", k: "dayHeader2" },
-    { kh: "ម៉ោង ០៦:៣០ ព្រឹក", en: "6:30 AM", k: "p5" },
-    { kh: "ម៉ោង ០៧:០០ ព្រឹក", en: "7:00 AM", k: "p6" },
-    { kh: "ម៉ោង ០៧:៣០ ព្រឹក", en: "7:30 AM", k: "p7" },
-    { kh: "ម៉ោង ០៨:០០ ព្រឹក", en: "8:00 AM", k: "p8" },
-    { kh: "ម៉ោង ០៩:០០ ព្រឹក", en: "9:00 AM", k: "p9" },
-    { kh: "ម៉ោង ១១:០០ ព្រឹក", en: "11:00 AM", k: "p10" },
-    { kh: "ម៉ោង ១២:០០ ថ្ងៃត្រង់", en: "12:00 PM", k: "p11" },
-    { kh: "ម៉ោង ០៤:០០ ល្ងាច", en: "4:00 PM", k: "dine" }
+    { kh: "ម៉ោង ០៧:៣០ ព្រឹក", en: "7:30 AM", k: "p3" },
+    { kh: "ម៉ោង ០៨:០០ ព្រឹក", en: "8:00 AM", k: "p4" },
+    { kh: "ម៉ោង ០៨:៣០ ព្រឹក", en: "8:30 AM", k: "p5" },
+    { kh: "ម៉ោង ០៩:០០ ព្រឹក", en: "9:00 AM", k: "p6" },
+    { kh: "ម៉ោង ០៩:៣០ ព្រឹក", en: "9:30 AM", k: "p7" },
+    { kh: "ម៉ោង ១១:០០ ព្រឹក", en: "11:00 AM", k: "p8" },
+    { kh: "ម៉ោង ១២:០០ ថ្ងៃត្រង់", en: "12:00 PM", k: "p9" },
+    { kh: "ម៉ោង ០៥:០០ ល្ងាច", en: "5:00 PM", k: "dine" }
   ],
 };
 
@@ -60,38 +58,36 @@ const T = {
     c1v2:'ថ្ងៃអាទិត្យ',c2v2:'ទី០៦ ខែធ្នូ ឆ្នាំ២០២៦',c3v2:'ម៉ោង ៥:០០ ល្ងាច',
     lunar:'ត្រូវនឹងថ្ងៃអាទិត្យ ១២រោច ខែកត្តិក ឆ្នាំមមី អដ្ឋស័ក ព.ស. ២៥៧០',
     venue:'គេហដ្ឋានខាងស្រី ភូមិបត់ត្រង់ ឃុំបត់ត្រង់ ស្រុកមង្គលបូរី ខេត្តបន្ទាយមានជ័យ',
-    gpn:'លោក ឆា ចាន់ណា\nអ្នកស្រី ផល ហាវ',bpn:'លោក គីវ ឈូ\nអ្នកស្រី ហ៊ាន អំ',
+    gpn:'លោក ជា ចាន់ណា\nអ្នកស្រី ផល ហាវ',bpn:'លោក គីវ ឈូ\nអ្នកស្រី ហ៊ាន អំ',
     honor2:'មានកិត្តិយសសូមគោរពអញ្ជើញ',
     blessing:'ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាង កញ្ញា និងប្រិយមិត្ត អញ្ជើញចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយស ដើម្បីប្រសិទ្ធពរជ័យសិរីសួស្តី ជ័យមង្គល ក្នុងពិធីរៀបអាពាហ៍ពិពាហ៍ កូនប្រុស-ស្រី របស់យើងខ្ញុំ',
     gl:'កូនប្រុសនាម',bl:'កូនស្រីនាម',gname:'ផល ម៉េង',bname:'ហ៊ាន លក្ខិណា',
-    cer:'ពិសារភោជនាហារប្រព្រឹត្តនៅ ថ្ងៃអាទិត្យ ១២រោច ខែកត្តិក ឆ្នាំមមី អដ្ឋស័ក ព.ស. ២៥៧០ ត្រូវនឹងថ្ងៃ ទី០៦ ខែធ្នូ ឆ្នាំ២០២៦ វេលាម៉ោង ៥:០០ ល្ងាច ស្ថិតនៅគេហដ្ឋានខាងស្រី ភូមិបត់ត្រង់ ឃុំបត់ត្រង់ ស្រុកមង្គលបូរី ខេត្តបន្ទាយមានជ័យ ដោយមេត្រីភាពៗ សូមអរគុណ!',
+    cer:'ពិសារភោជនីអាហារប្រព្រឹត្តនៅ ថ្ងៃអាទិត្យ ១២រោច ខែកត្តិក ឆ្នាំមមី អដ្ឋស័ក ព.ស. ២៥៧០ ត្រូវនឹងថ្ងៃ ទី០៦ ខែធ្នូ ឆ្នាំ២០២៦ វេលាម៉ោង ៥:០០ ល្ងាច ស្ថិតនៅគេហដ្ឋានខាងស្រី ភូមិបត់ត្រង់ ឃុំបត់ត្រង់ ស្រុកមង្គលបូរី ខេត្តបន្ទាយមានជ័យ ដោយមេត្រីភាពៗ សូមអរគុណ!',
     cpl:'កូនកំលោះ និង កូនក្រមុំ',glab:'កូនកំលោះ',blab:'កូនក្រមុំ',
-    gline:'កូនប្រុសរបស់\nលោក ឆា ចាន់ណា\nនិងអ្នកស្រី ផល ហាវ',bline:'កូនស្រីរបស់\nលោក គីវ ឈូ\nនិងអ្នកស្រី ហ៊ាន អំ',
+    gline:'កូនប្រុសរបស់\nលោក ជា ចាន់ណា\nនិងអ្នកស្រី ផល ហាវ',bline:'កូនស្រីរបស់\nលោក គីវ ឈូ\nនិងអ្នកស្រី ហ៊ាន អំ',
 
     cdt:'រាប់ថយក្រោយ ឆ្ពោះទៅថ្ងៃមង្គល',d:['ថ្ងៃ','ម៉ោង','នាទី','វិនាទី'],
-    progt:'កម្មវិធីសិរីមង្គលអាពាហ៍ពិពាហ៍',day1:'ថ្ងៃអាទិត្យ ទី០៦ ខែធ្នូ ឆ្នាំ២០២៦',dine:'ពិសាភោជនាហារ នៅគេហដ្ឋានខាងស្រី',
+    progt:'កម្មវិធីសិរីមង្គលអាពាហ៍ពិពាហ៍',day1:'ថ្ងៃអាទិត្យ ទី០៦ ខែធ្នូ ឆ្នាំ២០២៦',dine:'ពិសាភោជនីអាហារ នៅគេហដ្ឋានខាងស្រី',
 
     // ការបកស្រាយឈ្មោះកម្មវិធីនីមួយៗ (ជាភាសាខ្មែរ)
     dayHeader: 'ថ្ងៃសៅរ៍ ទី០៥ ខែធ្នូ ឆ្នាំ២០២៦',
     p1: 'ពិធីសែនក្រុងពាលី',
-    p2: 'ពិធីសូត្រមន្តលើកជោគជ័យ',
-    p3: 'ពិធីជុំពរ និងពាក់ចិញ្ចៀន',
-    p4: 'អញ្ជើញភ្ញៀវកិត្តិយសពិសាអាហារពេលល្ងាច',
+    p2: 'ពិធីសូត្រមន្តចម្រើនព្រះបរិត្ត និងអញ្ជើញភ្ញៀវកិត្តិយសពិសាអាហារពេលល្ងាច',
 
     dayHeader2: 'ថ្ងៃអាទិត្យ ទី០៦ ខែធ្នូ ឆ្នាំ២០២៦',
-    p5: 'ជួបជុំភ្ញៀវកិត្តិយសដើម្បីរៀបចំជំនូន',
-    p6: 'ពិធីហែជំនូនកំណត់ជ័យ',
-    p7: 'ពិធីចៅមហា និងមេបាពិនិត្យជំនូន រៀបរាប់ផ្លែឈើ និងអញ្ជើញភ្ញៀវពិសាអាហារពេលព្រឹក',
-    p8: 'ពិធីបំពាក់ចិញ្ចៀន',
-    p9: 'ពិធីកាត់សក់បង្កក់សិរី កូនប្រុស-កូនស្រី',
-    p10: 'ពិធីសំពះផ្ទឹមចងដៃ បង្វិលពពិល និងព្រះថោងតោងស្បៃ',
-    p11: 'អញ្ជើញភ្ញៀវកិត្តិយសពិសាអាហារថ្ងៃត្រង់ បញ្ចប់កិច្ចការមង្គលការ',
+    p3: 'ជួបជុំភ្ញៀវកិត្តិយសដើម្បីរៀបចំហែជំនូន',
+    p4: 'ពិធីហែជំនូនចូលរោងជ័យ',
+    p5: 'ពិធីចៅមហានិយាយជើងការ សែនព្រេន រៀបរាប់ផ្លែឈើ និងគ្រឿងដង្ហែ',
+    p6: 'អញ្ជើញភ្ញៀវកិត្តិយសពិសាអាហារពេលព្រឹក',
+    p7: 'ពិធីកាត់សក់បង្កក់សិរី កូនប្រុស-កូនស្រី',
+    p8: 'ពិធីសំពះផ្ទឹមចងដៃ បង្វិលពពិល និងព្រះថោងតោងស្បៃ',
+    p9: 'អញ្ជើញភ្ញៀវកិត្តិយសពិសាអាហារថ្ងៃត្រង់ បញ្ចប់កិច្ចការមង្គលការ',
 
     storyk:'រឿងរបស់យើង',storyh:'ដំណើររឿងនៃស្នេហ៍',
     candle:'',candleHint:'សូមប៉ះលើផ្ទៃទឹក ដើម្បីបណ្តែតផ្កាឈូក',
     galk:'វិចិត្រសាលរូបភាព',galh:'អនុស្សាវរីយ៍មុនថ្ងៃមង្គល',
     venk:'ទីកន្លែងប្រារព្ធពិធី',venh:'គេហដ្ឋានខាងស្រី',contact:'លេខទំនាក់ទំនង',openmap:'បើកផែនទី Google',cal:'កត់ចំណាំក្នុងប្រតិទិន',
-    gift:'ចំណងដៃ',giftt:'វត្តមានរបស់លោកអ្នក គឺជាកាដូដ៏មានតម្លៃបំផុត។ សម្រាប់អ្នកដែលមិនអាចអញ្ជើញមកបាន អាចផ្ញើចំណងដៃតាមរយៈ KHQR ។',saveqr:'រក្សាទុក QR',qrnote:'រូប QR គំរូ — សូមជំនួសដោយ KHQR / ABA',
+    gift:'ចំណងដៃ',giftt:'វត្តមានរបស់លោកអ្នក គឺជាកាដូដ៏មានតម្លៃបំផុត។ សម្រាប់អ្នកដែលមិនអាចអញ្ជើញមកបាន អាចផ្ញើចំណងដៃតាមរយៈ KHQR ។',saveqr:'រក្សាទុក QR',
     thanks:'សូមអរគុណ',thanksSub:'សូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅ ចំពោះវត្តមាន និងពរជ័យដ៏ថ្លៃថ្លារបស់លោកអ្នក',tg:'ផ្ញើតាម Telegram',ms:'ផ្ញើតាម Messenger',fb:'ផ្ញើតាម Facebook',cp:'ចម្លងតំណភ្ជាប់'
   }, 
   en:{
@@ -114,24 +110,22 @@ const T = {
     // Programme translations (English)
     dayHeader: 'Saturday, 05 December 2026',
     p1: 'San Krong Pali Ceremony',
-    p2: 'Sout Mon Ceremony',
-    p3: 'Ring Exchange Ceremony',
-    p4: 'Reception Dinner',
+    p2: 'Sout Mon Ceremony & Reception Dinner',
 
     dayHeader2: 'Sunday, 06 December 2026',
-    p5: 'Gathering of Guests for Offerings',
-    p6: 'Wedding Procession',
-    p7: 'Chau Maha & Inspection of Offerings, Breakfast',
-    p8: 'Ring Exchange Ceremony',
-    p9: 'Hair Cutting Ceremony',
-    p10: 'Sampah Phtim & Blessing Ceremony',
-    p11: 'Reception Lunch & Conclusion',
+    p3: 'Gathering of Guests for Wedding Procession',
+    p4: 'Wedding Procession into the Venue',
+    p5: 'Chau Maha, Prayers & Inspection of Offerings',
+    p6: 'Breakfast for Guests',
+    p7: 'Hair Cutting Ceremony',
+    p8: 'Sampah Phtim & Blessing Ceremony',
+    p9: 'Reception Lunch & Conclusion',
 
     storyk:'Our story',storyh:'A Journey of Love',
     candle:'Beneath the candlelight',candleHint:'Touch the water to float a lotus',
     galk:'Photo gallery',galh:'Memories Before the Big Day',
     venk:'Venue',venh:"Bride's Family Home",contact:'Contact',openmap:'Open Google Maps',cal:'Save to Calendar',
-    gift:'Wedding Gift',giftt:'Your presence is our most precious gift. If you cannot join us, you may send a wedding gift via KHQR.',saveqr:'Save QR',qrnote:'Sample QR — replace with KHQR / ABA',
+    gift:'Wedding Gift',giftt:'Your presence is our most precious gift. If you cannot join us, you may send a wedding gift via KHQR.',saveqr:'Save QR',
     thanks:'Thank You',thanksSub:'With heartfelt gratitude for your presence and your blessings',tg:'Telegram',ms:'Messenger',fb:'Facebook',cp:'Copy link'
   }
 };
