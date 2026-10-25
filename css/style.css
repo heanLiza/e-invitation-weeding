@@ -239,11 +239,12 @@ h2 {
 /* Welcome v3 fonts: Moulpali (Khmer, traditional) + Pinyon Script (English, same as the site's cursive) */
 #welcome .gframe span{font-family:"Moul","Battambang",serif;font-weight:400;font-size:clamp(1.05rem,4.4vw,1.4rem);letter-spacing:0;line-height:1.9;color:#fbefc0}
 #welcome .gframe.lat span{
-  font-family:"Cinzel",serif !important;
-  font-weight:700 !important;
+  font-family:Arial,"Helvetica Neue",Helvetica,sans-serif !important;
+  font-weight:600 !important;
   font-style:normal !important;
-  letter-spacing:.06em;
-  font-size:clamp(1.15rem,5vw,1.7rem) !important;
+  text-transform:none !important;
+  letter-spacing:.01em;
+  font-size:clamp(1.2rem,5.2vw,1.7rem) !important;
   line-height:1.7 !important;
 }#welcome .wbtn{font-family:"Moul","Battambang",serif;font-size:clamp(.9rem,3.6vw,1.05rem)}
 
