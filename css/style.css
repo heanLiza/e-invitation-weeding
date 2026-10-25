@@ -53,7 +53,9 @@ html[lang=en] body {
   font-family: var(--sc);
   line-height: 1.3;
 }
-
+/* Guest name box (from ?to=Name) */
+.guestbox{display:inline-block;max-width:90%;margin:.7rem auto;padding:.55rem 1.8rem;border:1px solid #d9b15a;border-radius:999px;background:rgba(0,0,0,.28);color:#fbefc0;font-family:"Battambang","Noto Serif Khmer",serif;font-size:clamp(1rem,3.4vw,1.35rem);line-height:1.6}
+.guestbox[hidden]{display:none}
 .foil {
   background: var(--foil);
   background-size: 220% 100%;
@@ -126,7 +128,108 @@ h2 {
 .rv.on.z {
   transform: none;
 }
+/* Story: user scrolls DOWN, photos slide sideways. No scrollbar. Colours come from your style.css (.wn). */
+.story{position:relative;padding:0 !important;min-height:0 !important}
+/* pinned by JS (not position:sticky) so ancestor overflow rules in style.css can't break it */
+.st-pin{position:absolute;top:0;left:0;width:100%;height:100vh;overflow:hidden;z-index:1}
+.st-track{display:flex;align-items:center;height:100%;width:max-content;padding:0 6vw;gap:5vw;will-change:transform}
+.st-title,.st-end{flex:none;width:min(62vw,860px);text-align:left}
+.st-title h2,.st-end h2{margin:.6rem 0 0;padding:.12em 0 .2em;font-size:clamp(2rem,5vw,4.2rem);line-height:1.6;text-wrap:balance;overflow:visible}
+.st-title small,.st-end small{display:block;margin-bottom:.4rem}
+.st-card{flex:none;margin:0}
+.st-img{height:min(68vh,40vw);aspect-ratio:16/10;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.st-img img{width:100%;height:100%;object-fit:cover;display:block}
+.st-card figcaption{display:flex;gap:.7rem;align-items:baseline;margin-top:.9rem;font-size:clamp(.85rem,1.2vw,1.05rem)}
+.st-card figcaption b{opacity:.7}
+@media (max-width:700px){
+  .st-track{gap:8vw}
+  .st-title,.st-end{width:84vw}
+  .st-img{height:min(70vh,122vw);width:auto;aspect-ratio:3/4}
+  .st-card figcaption{font-size:.95rem}
+}
 
+/* Candle section: always allow vertical page scroll on touch */
+#cl,#cl .tx,#cv{touch-action:pan-y !important}
+#cv{pointer-events:none}
+
+/* Phones/tablets: the candle section must never trap the finger */
+@media (pointer:coarse){
+  #cl,#cl *{touch-action:pan-y !important;overscroll-behavior:auto !important;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+  #cl{overflow-x:clip}
+}
+.lot{pointer-events:none}
+
+.credit{margin-top:.8rem;font-size:.85rem;opacity:.8}
+.credit b{color:#d9b15a}
+.credit a{color:inherit;text-decoration:underline}
+
+/* Guest name box (from ?to=Name) */
+.guestbox{display:inline-block;max-width:90%;margin:.7rem auto;padding:.55rem 1.8rem;border:1px solid #d9b15a;border-radius:999px;background:rgba(0,0,0,.28);color:#fbefc0;font-family:"Battambang","Noto Serif Khmer",serif;font-size:clamp(1rem,3.4vw,1.35rem);line-height:1.6}
+.guestbox[hidden]{display:none}
+#env .guestbox{display:block;width:max-content;margin:.4rem auto;padding:.35rem 1.4rem;font-size:clamp(.95rem,3vw,1.2rem);position:relative;z-index:5}
+
+/* Guest name — framed like a card (cream + gold border) */
+.guestbox{background:linear-gradient(#fffaf0,#f3e6c8);color:#3a1a14;border:2px solid #d9b15a;border-radius:14px;box-shadow:0 0 0 4px rgba(217,177,90,.35),0 6px 18px rgba(0,0,0,.35);font-weight:700;padding:.7rem 1.4rem}
+#env .guestwrap{text-align:center;position:relative;z-index:5;margin:.3rem auto}
+#env .guestwrap[hidden]{display:none}
+#env .guestwrap p{margin:.2rem 0;font-size:clamp(.95rem,3vw,1.2rem)}
+#env .guestbox{display:block;width:min(86vw,420px);margin:.3rem auto;font-size:clamp(1.05rem,4vw,1.5rem)}
+
+/* Envelope: show the guest name ON the closed doors, always inside the screen */
+#env .guestwrap{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(86vw,420px);margin:0;z-index:30;pointer-events:none}
+#env .guestwrap p{text-shadow:0 2px 8px rgba(0,0,0,.6)}
+
+/* ===== Welcome screen — matches the site: wine + gold, ornate corners, arch photo ===== */
+#welcome{position:fixed;inset:0;z-index:9999;display:flex;overflow-y:auto;overflow-x:hidden;touch-action:pan-y;overscroll-behavior:contain;text-align:center;
+  background:radial-gradient(ellipse at 50% 32%,#4a1219 0%,#2a0a10 48%,#12030a 100%);transition:opacity .8s ease,visibility .8s}
+#welcome.out{opacity:0;visibility:hidden;pointer-events:none}
+#welcome .wpat{position:fixed;inset:0;pointer-events:none;opacity:.9;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M0 40L40 0L80 40L40 80Z' fill='none' stroke='%23d9b15a' stroke-opacity='.09'/%3E%3Cpath d='M40 32l3 5 5 3-5 3-3 5-3-5-5-3 5-3z' fill='%23d9b15a' fill-opacity='.16'/%3E%3C/svg%3E")}
+#welcome::before{content:"";position:fixed;inset:12px;border:1px solid rgba(217,177,90,.55);pointer-events:none}
+#welcome::after{content:"";position:fixed;inset:19px;border:1px solid rgba(217,177,90,.2);pointer-events:none}
+#welcome .wco{position:fixed;width:clamp(64px,19vw,110px);height:clamp(64px,19vw,110px);pointer-events:none}
+#welcome .wco.tl{top:12px;left:12px}
+#welcome .wco.tr{top:12px;right:12px;transform:scaleX(-1)}
+#welcome .wco.bl{bottom:12px;left:12px;transform:scaleY(-1)}
+#welcome .wco.br{bottom:12px;right:12px;transform:scale(-1,-1)}
+
+#welcome .wcard{position:relative;margin:auto;width:min(92vw,500px);padding:2.2rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+#welcome .wcard>*{opacity:0;transform:translateY(14px);animation:wfade .9s ease forwards}
+#welcome .wcard>:nth-child(1){animation-delay:.05s}#welcome .wcard>:nth-child(2){animation-delay:.15s}
+#welcome .wcard>:nth-child(3){animation-delay:.25s}#welcome .wcard>:nth-child(4){animation-delay:.4s}
+#welcome .wcard>:nth-child(5){animation-delay:.55s}#welcome .wcard>:nth-child(6){animation-delay:.65s}
+#welcome .wcard>:nth-child(7){animation-delay:.75s}#welcome .wcard>:nth-child(8){animation-delay:.85s}
+#welcome .wcard>:nth-child(9){animation-delay:.95s}
+@keyframes wfade{to{opacity:1;transform:none}}
+
+#welcome .wcrest{width:88px;height:50px}
+#welcome .wt{margin:0;font-size:clamp(1.5rem,6.4vw,2.3rem);line-height:1.5}
+#welcome .wen{margin:0;font-size:clamp(.95rem,3.6vw,1.3rem)}
+#welcome .warchwrap{height:clamp(160px,29svh,290px);aspect-ratio:3/4;padding:4px;margin:.9rem 0 .8rem;
+  background:linear-gradient(160deg,#fbefc0,#9c7124 48%,#d9b15a);border-radius:999px 999px 16px 16px;
+  filter:drop-shadow(0 10px 22px rgba(0,0,0,.55)) drop-shadow(0 0 18px rgba(217,177,90,.25))}
+#welcome .warch{width:100%;height:100%;border-radius:999px 999px 12px 12px;background:#1a0508 center top/cover no-repeat}
+#welcome .wlabel{margin:.2rem 0 0;color:#e7c46b;font-size:clamp(1.05rem,4.2vw,1.4rem);letter-spacing:.04em}
+
+/* name: double gold rules with diamond ends */
+#welcome .gframe{position:relative;width:min(88vw,430px);margin:.3rem auto;padding:0;border:0;border-top:1px solid #d9b15a;border-bottom:1px solid #d9b15a;border-radius:0;box-shadow:none;outline:0;
+  background:linear-gradient(90deg,transparent,rgba(217,177,90,.16) 20%,rgba(217,177,90,.16) 80%,transparent);color:#fbefc0}
+#welcome .gframe::before,#welcome .gframe::after{content:"";display:block;position:absolute;top:50%;width:9px;height:9px;background:#d9b15a;transform:translateY(-50%) rotate(45deg)}
+#welcome .gframe::before{left:-2px}#welcome .gframe::after{right:-2px}
+#welcome .gframe span{display:block;padding:.75rem 1.8rem;font-family:"Cormorant Garamond","Noto Serif Khmer","Battambang",serif;font-weight:600;
+  font-size:clamp(1.4rem,6.2vw,2rem);line-height:1.5;letter-spacing:.02em;color:#fbefc0;text-shadow:0 2px 12px rgba(0,0,0,.6);word-break:break-word}
+#welcome .wdv{width:200px;height:22px;margin:.3rem 0 0}
+#welcome .wdate{margin:.1rem 0 .9rem;color:#e7c46b;font-size:clamp(.95rem,3.8vw,1.2rem)}
+
+#welcome .wbtn{position:relative;display:inline-flex;align-items:center;gap:.7rem;padding:.8rem 2.3rem;border-radius:999px;border:1px solid #fbefc0;
+  background:linear-gradient(180deg,#f0cd73,#b88a2e);color:#3a1208;font:700 clamp(1rem,4vw,1.2rem) "Noto Serif Khmer","Battambang",serif;cursor:pointer;
+  box-shadow:0 0 0 4px rgba(217,177,90,.18),0 8px 20px rgba(0,0,0,.5)}
+#welcome .wbtn svg{width:22px;height:22px}
+#welcome .wbtn::after{content:"";position:absolute;inset:-6px;border-radius:999px;border:1px solid rgba(251,239,192,.6);animation:wring 2.2s ease-out infinite}
+@keyframes wring{0%{transform:scale(.97);opacity:.9}100%{transform:scale(1.14,1.45);opacity:0}}
+
+@media (max-height:700px){#welcome .wcrest,#welcome .wen{display:none}#welcome .wcard{padding:1.6rem 1rem}}
+@media (prefers-reduced-motion:reduce){#welcome .wcard>*{animation:none;opacity:1;transform:none}#welcome .wbtn::after{animation:none}}
 /* Story: user scrolls DOWN, photos slide sideways. No scrollbar. Colours come from your style.css (.wn). */
 .story{position:relative;padding:0 !important;min-height:0 !important}
 /* pinned by JS (not position:sticky) so ancestor overflow rules in style.css can't break it */

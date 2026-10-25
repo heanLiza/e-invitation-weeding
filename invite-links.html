@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="km"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>តំណអញ្ជើញភ្ញៀវ · Guest invite links</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:"Noto Serif Khmer","Battambang",system-ui,sans-serif;background:#1a0508;color:#f3ead6;margin:0;padding:1rem;max-width:860px;margin:auto;line-height:1.6}
+h1{font-size:1.4rem;color:#fbefc0;margin:.4rem 0}
+p.help{margin:.2rem 0 1rem;opacity:.85;font-size:.95rem}
+input,textarea,button{font:inherit;border-radius:10px;border:1px solid #d9b15a;background:#2a0d12;color:#f3ead6;padding:.55rem .8rem}
+textarea{width:100%;min-height:90px}
+button{cursor:pointer;background:#d9b15a;color:#1a0508;font-weight:700;border:0}
+button.sec{background:transparent;color:#d9b15a;border:1px solid #d9b15a}
+.bar{display:flex;gap:.5rem;margin:.6rem 0;flex-wrap:wrap}.bar input{flex:1;min-width:200px}
+.row{display:flex;gap:.5rem;align-items:center;padding:.65rem 0;border-bottom:1px solid #4a141a;flex-wrap:wrap}
+.row b{flex:0 0 2rem;color:#d9b15a}.row .n{flex:1;min-width:140px;font-size:1.05rem}
+.row button{padding:.45rem .9rem}
+details{margin:.8rem 0;border:1px solid #4a141a;border-radius:10px;padding:.5rem .8rem}
+summary{cursor:pointer;color:#d9b15a}
+.ok{background:#3c9a5f!important;color:#fff!important}
+#count{opacity:.7;font-size:.9rem}
+</style></head><body>
+<h1>តំណអញ្ជើញភ្ញៀវ · Guest invite links</h1>
+<p class="help">ចុច <b>ចម្លងសារ</b> រួចបិទភ្ជាប់ផ្ញើទៅភ្ញៀវ (Telegram / Messenger / SMS) — ភ្ញៀវម្នាក់ៗនឹងឃើញឈ្មោះខ្លួនឯងលើសំបុត្រ។<br>Tap <b>Copy message</b>, then paste it to the guest. Each guest sees their own name on the invitation.</p>
+
+<div class="bar"><input id="q" placeholder="រកឈ្មោះ / Search name…"><span id="count"></span></div>
+<div id="list"></div>
+
+<details><summary>បន្ថែមឈ្មោះថ្មី / Add new names</summary>
+ <p class="help">មួយបន្ទាត់ = មួយឈ្មោះ · One name per line (saved on this device)</p>
+ <textarea id="add" placeholder="Mr. Example&#10;បងស្រី ឧទាហរណ៍"></textarea>
+ <div class="bar"><button id="addbtn">Add</button><button class="sec" id="reset">Reset to original list</button></div>
+</details>
+<details><summary>Website address</summary>
+ <div class="bar"><input id="base"></div>
+</details>
+<script>
+const DEFAULT_NAMES=["Mr.Von Kimheng", "បងប្រុស រៈបុិប", "Mr.Pun Bunna", "Mr.Yun Phin", "Mr.Pich Sophea", "Mr.Searm", "បងប្រុស ង៉ែត", "Mr.Korng Brospov", "បងប្រុស រីម", "ប្អូនស្រី ងិន", "Mrs.Maly", "Mr.Phal Chhe", "Mr.Phal Sovanara", "Phal Moeun", "Phal Chanvutha", "បងប្រុស ផល ហាន់", "បងប្រុស ផល ភាព", "Mrs.Seav Mouen", "Mr.Khunatip Nun", "ទីទី ស្រែអំបិល", "សម្លាញ់ ចាន់សុភី", "បងប្រុស រឿន ភូមិព្រាំង", "ប្អូន ប្រុសភិន", "Ms.Sū Ning", "Mr. Chan Na", "Mrs.Ah Chii", "ផល ប៊ុនហេង", "Mrs.Mean Sreyroth", "អាម៉ាក សាន"];
+const KEY="inviteExtraNames";
+const live=/^https?:/.test(location.protocol)&&!/^(localhost|127\.)/.test(location.hostname);
+const base=document.getElementById("base");
+base.value=live?location.origin+"/":"https://our-wedding-meng-leakhena.vercel.app/";
+const getExtra=()=>{try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}};
+const allNames=()=>DEFAULT_NAMES.concat(getExtra());
+const link=n=>base.value.replace(/\/?$/,"/")+"?to="+encodeURIComponent(n);
+const msg=n=>"សូមគោរពអញ្ជើញ "+n+"\nចូលរួមពិធីអាពាហ៍ពិពាហ៍ ម៉េង & លក្ខិណា\nសូមចុចតំណខាងក្រោមដើម្បីបើកសំបុត្រ 👇\n"+link(n);
+const list=document.getElementById("list"),q=document.getElementById("q"),count=document.getElementById("count");
+function flash(b,t){const o=b.textContent;b.textContent=t;b.classList.add("ok");setTimeout(()=>{b.textContent=o;b.classList.remove("ok")},1200)}
+function copy(text,b){(navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject()).catch(()=>{const t=document.createElement("textarea");t.value=text;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove()}).finally(()=>flash(b,"✓"))}
+function draw(){
+ const names=allNames(),f=q.value.trim().toLowerCase();let shown=0;list.innerHTML="";
+ names.forEach((n,i)=>{ if(f&&!n.toLowerCase().includes(f))return; shown++;
+  const r=document.createElement("div");r.className="row";
+  r.innerHTML='<b>'+(i+1)+'</b><span class="n"></span><button>ចម្លងសារ</button><button class="sec">ចម្លងតំណ</button><button class="sec">Telegram</button>';
+  r.querySelector(".n").textContent=n;
+  const [m,l,t]=r.querySelectorAll("button");
+  m.onclick=()=>copy(msg(n),m); l.onclick=()=>copy(link(n),l);
+  t.onclick=()=>window.open("https://t.me/share/url?url="+encodeURIComponent(link(n))+"&text="+encodeURIComponent("សូមគោរពអញ្ជើញ "+n),"_blank");
+  list.appendChild(r)});
+ count.textContent=shown+" / "+names.length}
+q.oninput=draw;base.oninput=draw;
+document.getElementById("addbtn").onclick=()=>{const add=document.getElementById("add");const v=add.value.split("\n").map(s=>s.trim()).filter(Boolean);if(!v.length)return;localStorage.setItem(KEY,JSON.stringify(getExtra().concat(v)));add.value="";draw()};
+document.getElementById("reset").onclick=()=>{if(confirm("Remove names you added?")){localStorage.removeItem(KEY);draw()}};
+draw();
+</script></body></html>

@@ -19,6 +19,8 @@ function setBackgrounds() {
   $("#cbg").style.backgroundImage = photoUrl(W.idx.candle);
   $("#arch").style.backgroundImage = photoUrl(W.idx.arch);
   $("#frame").style.backgroundImage = photoUrl(W.idx.couple);
+  const wb = $("#wbg");
+  if (wb) wb.style.backgroundImage = photoUrl(W.idx.coverP);
 }
 
 function renderProgramme() {
@@ -337,6 +339,17 @@ function openEnvelope() {
 
 // ចុចត្រង់ណាក៏បាននៅលើផ្ទាំង Intro (#env) គឺបើកសំបុត្រទាំងអស់
 $("#env").onclick = openEnvelope;
+
+/* ---------- Welcome screen (guest name) -> opens the invitation ---------- */
+
+const welcome = $("#welcome");
+if (welcome) {
+  $("#wbtn").onclick = () => {
+    welcome.classList.add("out");
+    openEnvelope(); // also starts the music (needs this tap)
+    setTimeout(() => welcome.remove(), 900);
+  };
+}
 /* ---------- Venue map, calendar file, QR codes ---------- */
 
 $("#map").src = `https://maps.google.com/maps?q=${W.lat},${W.lng}&output=embed`;
@@ -383,6 +396,20 @@ $("#s-cp").onclick = (e) =>
   navigator.clipboard?.writeText(location.href).then(() => {
     e.currentTarget.querySelector("span").textContent = "✓";
   });
+
+/* ---------- Personal guest name: ?to=Name ---------- */
+
+const urlParams = new URLSearchParams(location.search);
+let guestName = (urlParams.get("to") || "").trim();
+if (!guestName && urlParams.get("g") && W.guests) guestName = W.guests[+urlParams.get("g") - 1] || ""; // short link ?g=1..29
+guestName = guestName.slice(0, 60);
+if (guestName) {
+  $$(".guestbox").forEach((box) => {
+    box.querySelector("span").textContent = guestName; // textContent = safe, no HTML injection
+    box.hidden = false;
+    box.closest(".guestwrap")?.removeAttribute("hidden");
+  });
+}
 
 /* ---------- Start ---------- */
 

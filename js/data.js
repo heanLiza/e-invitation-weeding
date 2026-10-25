@@ -22,6 +22,13 @@ const W = {
 
   // The slideshow under "ដំណើរនៃស្នេហ៍" (8 photos)
   slides: [3, 4, 5, 9, 19, 6,1,8,9],
+  // Captions under each story photo (same order as `slides`) — edit freely
+  captions: {
+    kh: ["ជួបគ្នាលើកដំបូង","ស្នាមញញឹម","ដើមឈើចំណាស់","ស្ពានឈើបុរាណ","ប្រាសាទអង្គរ","សុខដុម","ប្រទីបថ្លាឈូក","នាពេលសាយណ្ហ","ពន្លឺភ្លើងទៀន"],
+    en: ["First meeting","Our smiles","The old tree","The wooden bridge","Ancient temple","Harmony","Lotus lanterns","Late afternoon","Candlelight"]
+  },
+  // Guest list for short links:  ?g=1 ... ?g=29  (same order = same number)
+  guests: ["Mr.Von Kimheng", "បងប្រុស រៈបុិប", "Mr.Pun Bunna", "Mr.Yun Phin", "Mr.Pich Sophea", "Mr.Searm", "បងប្រុស ង៉ែត", "Mr.Korng Brospov", "បងប្រុស រីម", "ប្អូនស្រី ងិន", "Mrs.Maly", "Mr.Phal Chhe", "Mr.Phal Sovanara", "Phal Moeun", "Phal Chanvutha", "បងប្រុស ផល ហាន់", "បងប្រុស ផល ភាព", "Mrs.Seav Mouen", "Mr.Khunatip Nun", "ទីទី ស្រែអំបិល", "សម្លាញ់ ចាន់សុភី", "បងប្រុស រឿន ភូមិព្រាំង", "ប្អូន ប្រុសភិន", "Ms.Sū Ning", "Mr. Chan Na", "Mrs.Ah Chii", "ផល ប៊ុនហេង", "Mrs.Mean Sreyroth", "អាម៉ាក សាន"],
   slideSeconds: 4, // seconds per slide (autoplay)
 
   // Payment QR images
@@ -66,6 +73,7 @@ const T = {
     cpl:'កូនកំលោះ និង កូនក្រមុំ',glab:'កូនកំលោះ',blab:'កូនក្រមុំ',
     gline:'កូនប្រុសរបស់\nលោក ជា ចាន់ណា\nនិងអ្នកស្រី ផល ហាវ',bline:'កូនស្រីរបស់\nលោក គីវ ឈូ\nនិងអ្នកស្រី ហ៊ាន អំ',
 
+    credit:'ចង់បានគេហទំព័រអាពាហ៍ពិពាហ៍ដូចនេះ? ទាក់ទង',
     cdt:'រាប់ថយក្រោយ ឆ្ពោះទៅថ្ងៃមង្គល',d:['ថ្ងៃ','ម៉ោង','នាទី','វិនាទី'],
     progt:'កម្មវិធីសិរីមង្គលអាពាហ៍ពិពាហ៍',day1:'ថ្ងៃអាទិត្យ ទី០៦ ខែធ្នូ ឆ្នាំ២០២៦',dine:'ពិសាភោជនីអាហារ នៅគេហដ្ឋានខាងស្រី',
 
@@ -83,11 +91,11 @@ const T = {
     p8: 'ពិធីសំពះផ្ទឹមចងដៃ បង្វិលពពិល និងព្រះថោងតោងស្បៃ',
     p9: 'អញ្ជើញភ្ញៀវកិត្តិយសពិសាអាហារថ្ងៃត្រង់ បញ្ចប់កិច្ចការមង្គលការ',
 
-    storyk:'រឿងរបស់យើង',storyh:'ដំណើររឿងនៃស្នេហ៍',
+    storyk:'ពីពេលព្រឹក ដល់ពេលល្ងាច',storyh:'ដំណើររឿង នៃស្នេហ៍',storyEndK:'ហើយដំណើរនៃស្នេហ៍',storyEndH:'នឹងបន្តរៀងរហូត',
     candle:'',candleHint:'សូមប៉ះលើផ្ទៃទឹក ដើម្បីបណ្តែតផ្កាឈូក',
     galk:'វិចិត្រសាលរូបភាព',galh:'អនុស្សាវរីយ៍មុនថ្ងៃមង្គល',
     venk:'ទីកន្លែងប្រារព្ធពិធី',venh:'គេហដ្ឋានខាងស្រី',contact:'លេខទំនាក់ទំនង',openmap:'បើកផែនទី Google',cal:'កត់ចំណាំក្នុងប្រតិទិន',
-    gift:'ចំណងដៃ',giftt:'វត្តមានរបស់លោកអ្នក គឺជាកាដូដ៏មានតម្លៃបំផុត។ សម្រាប់អ្នកដែលមិនអាចអញ្ជើញមកបាន អាចផ្ញើចំណងដៃតាមរយៈ KHQR ។',saveqr:'រក្សាទុក QR',
+    gift:'ចំណងដៃ',giftt:'វត្តមានរបស់លោកអ្នក គឺជាកាដូដ៏មានតម្លៃបំផុត។ សម្រាប់អ្នកដែលមិនអាចអញ្ជើញមកបាន អាចផ្ញើចំណងដៃតាមរយៈ KHQR ។',saveqr:'រក្សាទុក QR',qrnote:'រូប QR គំរូ — សូមជំនួសដោយ KHQR / ABA',
     thanks:'សូមអរគុណ',thanksSub:'សូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅ ចំពោះវត្តមាន និងពរជ័យដ៏ថ្លៃថ្លារបស់លោកអ្នក',tg:'ផ្ញើតាម Telegram',ms:'ផ្ញើតាម Messenger',fb:'ផ្ញើតាម Facebook',cp:'ចម្លងតំណភ្ជាប់'
   }, 
   en:{
@@ -104,6 +112,7 @@ const T = {
     cer:"On Sunday, 06 December 2026, at 5:00 PM, at the bride's family home, Bat Trang Village, Bat Trang Commune, Mongkol Borei District, Banteay Meanchey Province. Thank you!",
     cpl:'The Groom & The Bride',glab:'The Groom',blab:'The Bride',
     gline:'Son of\nMr. Chhea Channa\nand Mrs. Phol Hav',bline:'Daughter of\nMr. Kiv Chhu\nand Mrs. Hean Om',
+    credit:'Want a wedding website like this? Contact',
     cdt:'Counting down to our wedding day',d:['Days','Hours','Min','Sec'],
     progt:'Wedding Programme',day1:'Sunday, 06 December 2026',dine:'Reception dinner at the bride\'s family home',
 
@@ -121,11 +130,11 @@ const T = {
     p8: 'Sampah Phtim & Blessing Ceremony',
     p9: 'Reception Lunch & Conclusion',
 
-    storyk:'Our story',storyh:'A Journey of Love',
+    storyk:'From morning to evening',storyh:'A Journey of Love',storyEndK:'And our journey of love',storyEndH:'goes on forever',
     candle:'Beneath the candlelight',candleHint:'Touch the water to float a lotus',
     galk:'Photo gallery',galh:'Memories Before the Big Day',
     venk:'Venue',venh:"Bride's Family Home",contact:'Contact',openmap:'Open Google Maps',cal:'Save to Calendar',
-    gift:'Wedding Gift',giftt:'Your presence is our most precious gift. If you cannot join us, you may send a wedding gift via KHQR.',saveqr:'Save QR',
+    gift:'Wedding Gift',giftt:'Your presence is our most precious gift. If you cannot join us, you may send a wedding gift via KHQR.',saveqr:'Save QR',qrnote:'Sample QR — replace with KHQR / ABA',
     thanks:'Thank You',thanksSub:'With heartfelt gratitude for your presence and your blessings',tg:'Telegram',ms:'Messenger',fb:'Facebook',cp:'Copy link'
   }
 };
