@@ -23,10 +23,10 @@ const W = {
   // The slideshow under "ដំណើរនៃស្នេហ៍" (8 photos)
   slides: [3, 4, 5, 9, 19, 6,1,8,9],
   // Captions under each story photo (same order as `slides`) — edit freely
-  captions: {
-    kh: ["ជួបគ្នាលើកដំបូង","ស្នាមញញឹម","ដើមឈើចំណាស់","ស្ពានឈើបុរាណ","ប្រាសាទអង្គរ","សុខដុម","ប្រទីបថ្លាឈូក","នាពេលសាយណ្ហ","ពន្លឺភ្លើងទៀន"],
-    en: ["First meeting","Our smiles","The old tree","The wooden bridge","Ancient temple","Harmony","Lotus lanterns","Late afternoon","Candlelight"]
-  },
+  // captions: {
+  //   kh: ["ជួបគ្នាលើកដំបូង","ស្នាមញញឹម","ដើមឈើចំណាស់","ស្ពានឈើបុរាណ","ប្រាសាទអង្គរ","សុខដុម","ប្រទីបថ្លាឈូក","នាពេលសាយណ្ហ","ពន្លឺភ្លើងទៀន"],
+  //   en: ["First meeting","Our smiles","The old tree","The wooden bridge","Ancient temple","Harmony","Lotus lanterns","Late afternoon","Candlelight"]
+  // },
   // Guest list for short links:  ?g=1 ... ?g=29  (same order = same number)
   guests: ["Mr.Von Kimheng", "បងប្រុស រៈបុិប", "Mr.Pun Bunna", "Mr.Yun Phin", "Mr.Pich Sophea", "Mr.Searm", "បងប្រុស ង៉ែត", "Mr.Korng Brospov", "បងប្រុស រីម", "ប្អូនស្រី ងិន", "Mrs.Maly", "Mr.Phal Chhe", "Mr.Phal Sovanara", "Phal Moeun", "Phal Chanvutha", "បងប្រុស ផល ហាន់", "បងប្រុស ផល ភាព", "Mrs.Seav Mouen", "Mr.Khunatip Nun", "ទីទី ស្រែអំបិល", "សម្លាញ់ ចាន់សុភី", "បងប្រុស រឿន ភូមិព្រាំង", "ប្អូន ប្រុសភិន", "Ms.Sū Ning", "Mr. Chan Na", "Mrs.Ah Chii", "ផល ប៊ុនហេង", "Mrs.Mean Sreyroth", "អាម៉ាក សាន"],
   slideSeconds: 4, // seconds per slide (autoplay)
@@ -40,6 +40,7 @@ const W = {
     { kh: "ថ្ងៃសៅរ៍ ទី០៥ ខែធ្នូ ឆ្នាំ២០២៦", en: "Saturday, 05 December 2026", k: "dayHeader" },
     { kh: "ម៉ោង ០៤:០០ រសៀល", en: "4:00 PM", k: "p1" },
     { kh: "ម៉ោង ០៥:០០ ល្ងាច", en: "5:00 PM", k: "p2" },
+    { kh: "ម៉ោង ០៦:០០ រសៀល", en: "6:00 PM", k: "p2b" },
 
     // ថ្ងៃទី០៦ ខែធ្នូ ឆ្នាំ២០២៦
     { kh: "ថ្ងៃអាទិត្យ ទី០៦ ខែធ្នូ ឆ្នាំ២០២៦", en: "Sunday, 06 December 2026", k: "dayHeader2" },
@@ -79,8 +80,9 @@ const T = {
 
     // ការបកស្រាយឈ្មោះកម្មវិធីនីមួយៗ (ជាភាសាខ្មែរ)
     dayHeader: 'ថ្ងៃសៅរ៍ ទី០៥ ខែធ្នូ ឆ្នាំ២០២៦',
-    p1: 'ពិធីសែនក្រុងពាលី',
-    p2: 'ពិធីសូត្រមន្តចម្រើនព្រះបរិត្ត និងអញ្ជើញភ្ញៀវកិត្តិយសពិសាអាហារពេលល្ងាច',
+    p1: 'ពិធីសូត្រមន្តចម្រើនព្រះបរិត្ត',
+    p2: 'អញ្ជើញភ្ញៀវកិត្តិយសពិសាអាហារពេលល្ងាច',
+    p2b: 'ពិធីជាវខាន់ស្លា',
 
     dayHeader2: 'ថ្ងៃអាទិត្យ ទី០៦ ខែធ្នូ ឆ្នាំ២០២៦',
     p3: 'ជួបជុំភ្ញៀវកិត្តិយសដើម្បីរៀបចំហែជំនូន',
@@ -118,8 +120,9 @@ const T = {
 
     // Programme translations (English)
     dayHeader: 'Saturday, 05 December 2026',
-    p1: 'San Krong Pali Ceremony',
-    p2: 'Sout Mon Ceremony & Reception Dinner',
+    p1: 'Paritta Chanting Ceremony',
+    p2: 'Evening Dinner for Honored Guests',
+    p2b: 'Khan Sla Ceremony',
 
     dayHeader2: 'Sunday, 06 December 2026',
     p3: 'Gathering of Guests for Wedding Procession',

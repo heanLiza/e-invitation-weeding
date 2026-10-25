@@ -25,13 +25,20 @@ function setBackgrounds() {
 
 function renderProgramme() {
   $("#rows").innerHTML = W.prog
-    .map((r) => `<div class="row"><b>${lang === "kh" ? r.kh : r.en}</b><span>:</span><span>${T[lang][r.k]}</span></div>`)
+    .map((r) => {
+      const time = lang === "kh" ? r.kh : r.en;
+      if (/^dayHeader/.test(r.k)) return `<h3 class="pday">${time}</h3>`; // day title, shown once
+      return `<div class="row"><b>${time}</b><span>:</span><span>${T[lang][r.k] ?? ""}</span></div>`;
+    })
     .join("");
 }
 
 function render() {
   document.documentElement.lang = lang === "kh" ? "km" : "en";
-  $$("[data-t]").forEach((el) => (el.textContent = T[lang][el.dataset.t]));
+  $$("[data-t]").forEach((el) => {
+    const txt = T[lang][el.dataset.t];
+    if (txt !== undefined) el.textContent = txt; // never show "undefined"
+  });
   renderProgramme();
   setBackgrounds();
   tickCountdown();
@@ -406,6 +413,7 @@ guestName = guestName.slice(0, 60);
 if (guestName) {
   $$(".guestbox").forEach((box) => {
     box.querySelector("span").textContent = guestName; // textContent = safe, no HTML injection
+    box.classList.toggle("lat", !/[\u1780-\u17FF]/.test(guestName)); // English name -> script font
     box.hidden = false;
     box.closest(".guestwrap")?.removeAttribute("hidden");
   });

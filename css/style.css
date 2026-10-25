@@ -235,6 +235,47 @@ h2 {
 #welcome .gframe span{font-family:"Cinzel","Moul","Battambang",serif;font-weight:500;font-size:clamp(1.05rem,4.8vw,1.55rem);line-height:1.8;letter-spacing:.03em}
 #welcome .wbtn{font-family:"Moul","Battambang",serif;font-weight:400;font-size:clamp(.9rem,3.6vw,1.05rem);padding:.85rem 2.2rem;gap:.8rem}
 #welcome .wbtn svg{width:26px;height:26px}
+
+/* Welcome v3 fonts: Moulpali (Khmer, traditional) + Pinyon Script (English, same as the site's cursive) */
+#welcome .gframe span{font-family:"Moul","Battambang",serif;font-weight:400;font-size:clamp(1.05rem,4.4vw,1.4rem);letter-spacing:0;line-height:1.9;color:#fbefc0}
+#welcome .gframe.lat span{font-family:"Pinyon Script",cursive;font-size:clamp(1.9rem,8.5vw,2.8rem);line-height:1.5;letter-spacing:.01em}
+#welcome .wbtn{font-family:"Moul","Battambang",serif;font-size:clamp(.9rem,3.6vw,1.05rem)}
+
+/* Footer credit */
+.credit{margin-top:1rem;font-size:.9rem;opacity:1}
+.credit b{color:#d9b15a;font-size:1.05em}
+.clinks{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:.6rem}
+.clinks a{display:inline-block;padding:.35rem 1rem;border:1px solid #d9b15a;border-radius:999px;color:#fbefc0;text-decoration:none;font-size:.85rem}
+.clinks a:hover{background:#d9b15a;color:#1a0508}
+
+/* Programme: one colour for time + text, day title shown once */
+.progc .row b,.progc .row span{color:#f3ead6;font-weight:500}
+.progc .row b{font-weight:700}
+.progc .pday{margin:1.8rem 0 .5rem;padding-bottom:.5rem;border-bottom:1px solid rgba(217,177,90,.55);color:#e7c46b;font-size:clamp(1.05rem,4vw,1.35rem);text-align:left}
+.progc .pday:first-child{margin-top:0}
+
+/* ===== Creator card — same look as the invitation cards ===== */
+.crsec{padding:4rem 5vw;text-align:center;background:var(--pat),linear-gradient(#1a0508,#120305)}
+.crc{max-width:540px;margin:0 auto;text-align:center}
+.crcrest{display:block;margin:0 auto;width:90px;height:52px}
+.cren{margin:.3rem 0 0;font-family:"Battambang",serif;font-style:italic;font-size:1.15rem;color:#e9dcc0}
+.crsig{margin:0;font-size:clamp(3.2rem,15vw,4.8rem);line-height:1.15}
+.crh{margin:.6rem 0 .2rem;font-size:clamp(1.1rem,4.8vw,1.65rem);line-height:1.9}
+.cren2{margin:0;font-family:"Battambang",serif;font-style:italic;font-size:1.2rem;color:#e9dcc0}
+.crc .dv{margin:.8rem auto}
+.crlist{list-style:none;display:inline-block;text-align:left;margin:.2rem 0 1.5rem;padding:0}
+.crlist li{position:relative;padding:.15rem 0 .15rem 1.6rem;font-family:"Battambang",serif;font-size:1.1rem;line-height:1.8;color:#f6eedd}
+.crlist li::before{content:"";position:absolute;left:.25rem;top:.95em;width:7px;height:7px;background:#d9b15a;transform:rotate(45deg)}
+.crcta{position:relative;display:inline-flex;align-items:center;gap:.7rem;padding:.9rem 2.3rem;border-radius:999px;border:1px solid #fbefc0;text-decoration:none;
+  background:linear-gradient(180deg,#f0cd73,#b88a2e);color:#3a1208;font-family:"Battambang",serif;font-weight:700;font-size:1.2rem;
+  box-shadow:0 0 0 4px rgba(217,177,90,.18),0 10px 24px rgba(0,0,0,.5)}
+.crcta svg{width:22px;height:22px}
+.crcta::after{content:"";position:absolute;inset:-6px;border-radius:999px;border:1px solid rgba(251,239,192,.6);animation:crring 2.2s ease-out infinite}
+@keyframes crring{0%{transform:scale(.97);opacity:.9}100%{transform:scale(1.14,1.45);opacity:0}}
+.crmore{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem}
+.crmore a{padding:.4rem 1.3rem;border:1px solid #d9b15a;border-radius:999px;color:#fbefc0;text-decoration:none;font-family:"Battambang",serif;font-size:1.1rem}
+.crmore a:hover{background:#d9b15a;color:#1a0508}
+@media (prefers-reduced-motion:reduce){.crcta::after{animation:none}}
 /* Story: user scrolls DOWN, photos slide sideways. No scrollbar. Colours come from your style.css (.wn). */
 .story{position:relative;padding:0 !important;min-height:0 !important}
 /* pinned by JS (not position:sticky) so ancestor overflow rules in style.css can't break it */
