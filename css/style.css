@@ -230,6 +230,11 @@ h2 {
 
 @media (max-height:700px){#welcome .wcrest,#welcome .wen{display:none}#welcome .wcard{padding:1.6rem 1rem}}
 @media (prefers-reduced-motion:reduce){#welcome .wcard>*{animation:none;opacity:1;transform:none}#welcome .wbtn::after{animation:none}}
+
+/* Welcome: use the site's own fonts (Moul for Khmer, Cinzel for Latin) */
+#welcome .gframe span{font-family:"Cinzel","Moul","Battambang",serif;font-weight:500;font-size:clamp(1.05rem,4.8vw,1.55rem);line-height:1.8;letter-spacing:.03em}
+#welcome .wbtn{font-family:"Moul","Battambang",serif;font-weight:400;font-size:clamp(.9rem,3.6vw,1.05rem);padding:.85rem 2.2rem;gap:.8rem}
+#welcome .wbtn svg{width:26px;height:26px}
 /* Story: user scrolls DOWN, photos slide sideways. No scrollbar. Colours come from your style.css (.wn). */
 .story{position:relative;padding:0 !important;min-height:0 !important}
 /* pinned by JS (not position:sticky) so ancestor overflow rules in style.css can't break it */
